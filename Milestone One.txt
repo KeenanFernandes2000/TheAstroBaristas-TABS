@@ -1,0 +1,12 @@
+Team Name: 
+TheAstroBaristas (TABs)
+
+Participants: 
+Keenan Domnick Fernandes (c)
+Jay Ryan Andrade
+Kishore Krishna Janakinadh
+
+
+Description:
+This fullstack project will be an e-commerce website that uses all CRUD operations, and the theme is coffee based where we sell products related to it (i.e coffee beans, coffee powder, coffee equipment, etc), ideally this project will consist of 4 pages (home, login/registration, products(brewing items) & products(coffee items)). If time permits we will have addtional pages such as admin, checkout, my account & price comparison. Features will be user login & registration, adding items to cart, sorting and filtering products, displaying products with their description and cost. (Additional features if time permits: checkout page with Strip API, price comparison of products, responsive).
+
