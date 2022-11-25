@@ -1,6 +1,6 @@
 /*
 Background-color - #65647c
-Borders - #8B7E74
+Borders & Cards- #8B7E74
 Heading Color - #f1d3b3
 Font Color - #c7bca1
 
@@ -11,6 +11,7 @@ Font Color - #c7bca1
 */
 
 /* Jay */
+
 /* Keenan */
 h1,
 h2,
@@ -20,26 +21,48 @@ h5,
 h6 {
   color: #f1d3b3;
 }
+
+img {
+  filter: brightness(80%);
+}
+
 body {
   background-color: #65647c;
   color: #c7bca1;
 }
 
+.btn-primary {
+  color: #f1d3b3;
+  background-color: #f1d3b300;
+  border: solid 1px #65647c;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #65647c;
+  background-color: #f1d3b3;
+  border: solid 1px #65647c00;
+}
+
 .p-card {
-  border: 1px solid #8b7e74;
+  background-color: #8b7e74;
   border-radius: 25px;
   overflow: hidden;
 }
+.p-card img {
+  object-fit: contain;
+}
 
 .p-details {
-  padding: 10px;
+  padding: 1rem;
   border-radius: 0px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
 }
 
 .spec span {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .spec h6 {
@@ -51,6 +74,6 @@ body {
   background-color: #fff;
   margin-top: 4px;
   margin-bottom: 4px;
-  height: 0.2px;
+  height: 2px;
 }
 /* Krishna */
