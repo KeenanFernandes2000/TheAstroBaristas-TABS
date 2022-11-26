@@ -12,6 +12,19 @@ Font Color - #c7bca1
 
 /* Jay */
 
+.hero-bg {
+  background-color: #65647c;
+}
+
+.drop-link-list a:hover {
+  background-color: #c7bca1;
+  color: #65647c;
+}
+.header-title {
+  border-right: 2px solid;
+  padding-right: 20px;
+}
+
 /* Keenan */
 h1,
 h2,
