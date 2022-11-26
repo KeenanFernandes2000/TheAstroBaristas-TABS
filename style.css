@@ -78,46 +78,7 @@ body {
   height: 2px;
 }
 /* Krishna */
-p {
-  color: rgb(64, 30, 36);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: smaller;
-}
 
-p1 {
-  color: rgb(64, 30, 36);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: smaller;
-}
-
-h1 {
-  color: rgb(75, 36, 36);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-weight: bold;
-}
-
-h3 {
-  color: black;
-}
-
-small {
-  color: black;
-  font-weight: bold;
-}
-
-div.container {
-  position: relative;
-}
-
-div.topleft {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 18px;
-}
-
-img {
-  width: 100%;
-  height: auto;
-  opacity: 20;
+.text-bg {
+  background-color: #8b7e74;
 }
