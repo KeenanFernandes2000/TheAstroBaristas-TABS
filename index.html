@@ -47,16 +47,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#about">About Us</a>
             </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 id="dropProd"
-                href="#"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 >Products</a
@@ -66,11 +65,8 @@
                 aria-labelledby="dropProd"
               >
                 <li>
-                  <a href="" class="dropdown-item text-white"
+                  <a href="#brew" class="dropdown-item text-white"
                     >Brewing Products</a
-                  >
-                  <a href="" class="dropdown-item text-white"
-                    >Coffee Products</a
                   >
                 </li>
               </ul>
@@ -87,14 +83,14 @@
       </div>
     </nav>
     <!-- HERO -->
-    <div class="hero-bg text-secondary px-4 py-5 text-center">
+    <div class="hero-bg text-secondary px-4 py-5 text-center" id="home">
       <div class="py-5">
-        <h1 class="display-5 fw-bold text-white">
-          Everything You Need <br />
-          for <br />COFFEE and More
+        <h1 class="display-5 fw-bold">
+          Everything you need <br />
+          for COFFEE and more
         </h1>
         <div class="col-lg-6 mx-auto">
-          <p class="fs-5 mb-4">
+          <p class="fs-5 mb-4 text-white">
             Get the best coffee beans, brewing equipment and more at the best
             price.
           </p>
@@ -103,25 +99,31 @@
     </div>
     <!-- ABOUT US -->
     <div
-      class="container px-4 py-5 feature-icon d-inline-flex align-items-center text-right fs-4 mb-3"
+      class="feature-icon align-items-center text-right fs-4 mb-3"
+      id="about"
     >
-      <div class="text-block justify-content-sm-left">
-        <h1 class="pb-2 border-bottom" class="display-4 fw-bold">About Us</h1>
-        <p>
-          We promise that we will serve the best quality coffee from the world's
-          finest coffee beans. And just like our coffee, our story is unique.
-        </p>
-        <p>
-          This beautiful coffee story was started by 3 friends who have all
-          connected on one single emotion, and that emotion is coffee, our name
-          the Astro baristas also has a meaning to it where the word baristas is
-          inspired from our love for and to deliver coffee and the word Astro
-          comes from a class we all met in and that is where the bean of Astro
-          baristas was planted, and from then on we were committed to crafting
-          the finest quality coffee,and stay tuned in the future for our
-          signature blends and coffee beans from parts of the world of your
-          choice.
-        </p>
+      <div class="container">
+        <div class="container px-4">
+          <h1 class="pb-2 border-bottom">About Us</h1>
+        </div>
+        <div class="container px-4 py-5">
+          <p>
+            We promise that we will serve the best quality coffee from the
+            world's finest coffee beans. And just like our coffee, our story is
+            unique.
+          </p>
+          <p>
+            This beautiful coffee story was started by 3 friends who have all
+            connected on one single emotion, and that emotion is coffee, our
+            name the Astro baristas also has a meaning to it where the word
+            baristas is inspired from our love for and to deliver coffee and the
+            word Astro comes from a class we all met in and that is where the
+            bean of Astro baristas was planted, and from then on we were
+            committed to crafting the finest quality coffee,and stay tuned in
+            the future for our signature blends and coffee beans from parts of
+            the world of your choice.
+          </p>
+        </div>
         <div class="container px-4 py-5" id="custom-cards">
           <h2 class="pb-2 border-bottom">Our Founders</h2>
           <div
@@ -133,7 +135,7 @@
                 style="background-image: url('unsplash-photo-1.jpg')"
               >
                 <div
-                  class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                  class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1 align-items-center"
                 >
                   <h3 class="pt-10 mt-10 mb-8 display-6 lh-1 fw-bold">
                     Keenan
@@ -240,7 +242,7 @@
     </div>
 
     <!-- BREWING ITEMS -->
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5" id="brew">
       <div class="brew-heading text-center text-capitalize my-5">
         <h1>brewing products</h1>
       </div>
