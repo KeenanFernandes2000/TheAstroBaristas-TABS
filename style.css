@@ -52,6 +52,7 @@ body {
   border-radius: 25px;
   overflow: hidden;
 }
+
 .p-card img {
   object-fit: contain;
 }
