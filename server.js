@@ -6,6 +6,8 @@ require("dotenv").config();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
+const productsRoute = require("./routes/products-routes");
+
 const dbURL = process.env.DB_URL;
 
 const dbConfig = {
@@ -26,6 +28,8 @@ mongoose
 server.get("/", function (req, res) {
   res.send("INDEX PAGE");
 });
+
+server.use("/product", productsRoute);
 
 server.listen(3001, function () {
   console.log("Running on http://localhost:3001/");
