@@ -2,6 +2,7 @@ const express = require("express");
 const server = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const favouritesRoutes = require("./routes/favourites-routes.js");
 require("dotenv").config();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
@@ -26,6 +27,8 @@ mongoose
 server.get("/", function (req, res) {
   res.send("INDEX PAGE");
 });
+
+server.use("/favourites", favouritesRoutes);
 
 server.listen(3001, function () {
   console.log("Running on http://localhost:3001/");
