@@ -5,10 +5,15 @@ const ProdModel = require("../models/ProductsModel.js");
 
 router.post("/add", function (req, res) {
   let prodInfo = {
-    brand: req.body.brand,
-    model: req.body.model,
+    name: req.body.name,
+    weight: req.body.weight,
+    quantity: req.body.quantity,
+    image: req.body.image,
     price: req.body.price,
-    color: req.body.color,
+    category: req.body.category,
+    rating: req.body.rating,
+    brand: req.body.brand,
+    createdDate: req.body.createdDate,
   };
   ProdModel.create(prodInfo)
     .then(function (prodDoc) {
@@ -33,13 +38,24 @@ router.post("/find", function (req, res) {
       res.send("An Error Occurred");
     });
 });
+router.post("/findall", function (req, res) {
+  ProdModel.find({})
+    .then(function (prodDoc) {
+      res.json(prodDoc);
+      console.log(prodDoc);
+    })
+    .catch(function (err) {
+      console.log("/product/findall error", err);
+      res.send("An Error Occurred");
+    });
+});
 
-router.post("/update", function (req, res) {
-  ProdModel.findOneAndUpdate(
-    { brand: req.body.brand },
-    { model: req.body.newBrand },
-    { new: true }
-  )
+router.put("/update", function (req, res) {
+  let updates = {};
+  if (req.body.products) {
+    updates.product = req.body.products;
+  }
+  ProdModel.findOneAndUpdate()
     .then(function (prodDoc) {
       res.json(prodDoc);
       console.log(prodDoc);
@@ -51,7 +67,15 @@ router.post("/update", function (req, res) {
 });
 
 router.delete("/delete", function (req, res) {
-  ProdModel.deleteOne;
+  ProdModel.findOneAndDelete({ name: req.body.name }, { new: true })
+    .then(function (prodDoc) {
+      res.json(prodDoc);
+      console.log(prodDoc);
+    })
+    .catch(function (err) {
+      console.log("/product/delete error", err);
+      res.send("An Error Occurred");
+    });
 });
 
 module.exports = router;
