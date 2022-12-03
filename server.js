@@ -6,7 +6,10 @@ require("dotenv").config();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
+
 const productsRoute = require("./routes/products-routes");
+const usersRoutes = require('./routes/user-routes.js');
+
 
 const dbURL = process.env.DB_URL;
 
@@ -29,7 +32,10 @@ server.get("/", function (req, res) {
   res.send("INDEX PAGE");
 });
 
+
 server.use("/product", productsRoute);
+server.use('/users', usersRoutes);
+
 
 server.listen(3001, function () {
   console.log("Running on http://localhost:3001/");
