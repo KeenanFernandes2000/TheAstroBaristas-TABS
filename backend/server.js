@@ -2,14 +2,18 @@ const express = require("express");
 const server = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const expressFormData = require("express-form-data");
 require("dotenv").config();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
+server.use(cors());
+server.use(expressFormData.parse());
 
 //Importing routes to server
-// const favouritesRoutes = require("./routes/favourites-routes.js");
-// const productsRoute = require("./routes/products-routes");
-// const usersRoutes = require("./routes/user-routes.js");
+const favouritesRoutes = require("./routes/favourites-routes.js");
+const productsRoute = require("./routes/products-routes");
+const usersRoutes = require("./routes/user-routes.js");
 
 const dbURL = process.env.DB_URL;
 
@@ -33,9 +37,9 @@ server.get("/", function (req, res) {
 });
 
 //Using separate urls for each route
-// server.use("/favourites", favouritesRoutes);
-// server.use("/product", productsRoute);
-// server.use("/users", usersRoutes);
+server.use("/favourites", favouritesRoutes);
+server.use("/product", productsRoute);
+server.use("/users", usersRoutes);
 
 server.listen(3001, function () {
   console.log("Running on http://localhost:3001/");
