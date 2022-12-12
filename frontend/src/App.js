@@ -1,8 +1,8 @@
 // "Krishna's imports"
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import HomeScreen from "./HomeScreen";
-import AboutScreen from "./AboutScreen";
+import { BrowserRouter, Switch } from "react-router-dom";
+import HomeScreen from "./pages/HomeScreen";
+import AboutScreen from "./pages/AboutScreen";
 import LayoutRoute from "./LayoutRoute";
 // "Krishna's imports end"
 
