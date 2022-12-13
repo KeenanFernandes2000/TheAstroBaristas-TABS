@@ -5,6 +5,9 @@ import HomeScreen from "./pages/HomeScreen";
 import AboutScreen from "./pages/AboutScreen";
 import LayoutRoute from "./LayoutRoute";
 // "Krishna's imports end"
+import GuestLayoutRoute from "./GuestLayoutRoute";
+import RegistrationScreen from "./pages/RegistrationScreen";
+import LoginScreen from "./pages/LoginScreen";
 
 function App() {
   return (
@@ -12,6 +15,13 @@ function App() {
       <Switch>
         <LayoutRoute path="/" exact={true} component={HomeScreen} />
         <LayoutRoute path="/about" exact={true} component={AboutScreen} />
+        {/* <LayoutRoute path="/contact" exact={true} component={ContactScreen} /> */}
+        <GuestLayoutRoute
+          path="/register"
+          exact={true}
+          component={RegistrationScreen}
+        />
+        <GuestLayoutRoute path="/login" exact={true} component={LoginScreen} />
       </Switch>
     </BrowserRouter>
   );

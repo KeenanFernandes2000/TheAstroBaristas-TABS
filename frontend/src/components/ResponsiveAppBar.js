@@ -13,15 +13,17 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { UserContext } from "../UserContext";
 
 const pages = ["Home", "About Us", "products"];
 const pagesPaths = ["/", "/about", "/products"];
 
-const settings = ["Profile", "Account", "Logout", "Sign Up"];
+const settings = ["Profile", "Account"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { loggedIn, logoutUser } = React.useContext(UserContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -54,11 +56,11 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "white",
+              color: "inherit",
               textDecoration: "none",
             }}
           >
-            TheAstroBaristas
+            THEASTROBARISTAS
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -68,7 +70,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="white"
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
@@ -90,9 +92,14 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map((page, i) => (
+                <MenuItem
+                  onClick={handleCloseNavMenu}
+                  component={ReactLink}
+                  to={pagesPaths[i]}
+                  key={page}
+                >
+                  {page}
                 </MenuItem>
               ))}
             </Menu>
@@ -110,7 +117,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "black",
+              color: "inherit",
               textDecoration: "none",
             }}
           >
@@ -122,7 +129,7 @@ function ResponsiveAppBar() {
                 component={ReactLink}
                 to={pagesPaths[i]}
                 key={page}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
               </Button>
@@ -156,6 +163,20 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+
+              {loggedIn ? (
+                <MenuItem onClick={logoutUser}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+              ) : (
+                <MenuItem
+                  to={"/register"}
+                  component={ReactLink}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Typography textAlign="center">Register</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>
