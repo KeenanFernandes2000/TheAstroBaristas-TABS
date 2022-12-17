@@ -15,10 +15,10 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { UserContext } from "../UserContext";
 
-const pages = ["Home", "About Us", "products"];
-const pagesPaths = ["/", "/about", "/products"];
+const pages = ["Home", "About Us", "products", "Profile"];
+const pagesPaths = ["/", "/about", "/products", "/profile"];
 
-const settings = ["Profile", "Account",];
+const settings = ["Profile", "Account"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -168,22 +168,23 @@ function ResponsiveAppBar() {
                 <MenuItem onClick={logoutUser}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
-              ) : (<Box>
-                <MenuItem
-                  to={"/register"}
-                  component={ReactLink}
-                  onClick={handleCloseUserMenu}
-                >
-                  <Typography textAlign="center">Register</Typography>
-                </MenuItem>
-               
-               <MenuItem
-                to={"/login"}
-                component={ReactLink}
-                onClick={handleCloseUserMenu}
-              >
-                <Typography textAlign="center">Login</Typography>
-              </MenuItem> </Box>
+              ) : (
+                <Box>
+                  <MenuItem
+                    to={"/register"}
+                    component={ReactLink}
+                    onClick={handleCloseUserMenu}
+                  >
+                    <Typography textAlign="center">Register</Typography>
+                  </MenuItem>
+                  <MenuItem
+                    to={"/login"}
+                    component={ReactLink}
+                    onClick={handleCloseUserMenu}
+                  >
+                    <Typography textAlign="center">Login</Typography>
+                  </MenuItem>{" "}
+                </Box>
               )}
             </Menu>
           </Box>
