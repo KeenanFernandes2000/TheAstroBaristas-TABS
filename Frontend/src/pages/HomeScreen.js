@@ -1,9 +1,15 @@
-import React from "react";
-// import { Route } from "react-router-dom";
-import Hero from "../components/Hero";
+import Hero from "./Hero.js";
 
 function HomeScreen() {
-  return <Hero />;
+  return (
+    <div>
+      <div className="container">
+        {/* <h1>Home</h1>
+        <p>Welcome to the home page</p> */}
+        <Hero />
+      </div>
+    </div>
+  );
 }
 
 export default HomeScreen;

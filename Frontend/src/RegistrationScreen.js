@@ -71,6 +71,7 @@ function RegistrationScreen() {
       formData.append("lastName", lastNameField.value);
       formData.append("email", emailField.value);
       formData.append("password", passwordField.value);
+      formData.append("avatar", avatarField.value);
 
       fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/register`, {
         method: "POST",

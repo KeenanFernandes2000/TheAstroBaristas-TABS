@@ -1,60 +1,91 @@
-const express = require("express");
-const router = express.Router();
-const ProductModel = require("../models/ProductModel.js");
+const express = require("express"); //import express
+const router = express.Router(); //create express app
+const bodyParser = require("body-parser"); //import body-parser
+const ProdModel = require("../models/ProductsModel.js");
 
-//Add Product
 router.post("/add", function (req, res) {
-  //Creating an object to send to mongodb
-  let newDocument = {
-    brand: req.body.brand,
-    model: req.body.model,
+  let prodInfo = {
+    name: req.body.name,
+    weight: req.body.weight,
+    quantity: req.body.quantity,
+    image: req.body.image,
     price: req.body.price,
-    color: req.body.color,
+    category: req.body.category,
+    rating: req.body.rating,
+    brand: req.body.brand,
+    createdDate: req.body.createdDate,
   };
-
-  ProductModel.create(newDocument)
-    //if the above is successfull
+  ProdModel.create(prodInfo)
     .then(function (dbDocument) {
-      res.json(dbDocument);
+      res.json({
+        status: "ok",
+        message: dbDocument,
+      });
     })
-    //if the above is unsuccessfull
-    .catch(function (error) {
-      console.log("/product error", error);
-
-      res.send("An error has occured");
+    .catch(function (err) {
+      console.log("/product/add error", err);
+      res.send("An Error Occurred");
     });
 });
 
-//Find Product
 router.post("/find", function (req, res) {
-  ProductModel.find({
+  ProdModel.find({
     brand: req.body.brand,
   })
     .then(function (dbDocument) {
-      res.json(dbDocument);
-      console.log(dbDocument);
+      res.json({
+        status: "ok",
+        message: dbDocument,
+      });
     })
-    .catch(function (error) {
-      console.log("/product error", error);
-
-      res.send("An error has occured");
+    .catch(function (err) {
+      console.log("/product/find error", err);
+      res.send("An Error Occurred");
+    });
+});
+router.post("/findall", function (req, res) {
+  ProdModel.find({})
+    .then(function (dbDocument) {
+      res.json({
+        status: "ok",
+        message: dbDocument,
+      });
+    })
+    .catch(function (err) {
+      console.log("/product/findall error", err);
+      res.send("An Error Occurred");
     });
 });
 
-//Update Product
 router.put("/update", function (req, res) {
-  ProductModel.findOneAndUpdate(
-    { model: req.body.model, repModel: req.body.repModel },
-    { $set: { model: req.body.repModel } },
-    { new: true }
-  )
+  let updates = {};
+  if (req.body.products) {
+    updates.product = req.body.products;
+  }
+  ProdModel.findOneAndUpdate()
     .then(function (dbDocument) {
-      res.json(dbDocument);
+      res.json({
+        status: "ok",
+        message: dbDocument,
+      });
     })
-    .catch(function (error) {
-      console.log("/product error", error);
+    .catch(function (err) {
+      console.log("/product/update error", err);
+      res.send("An Error Occurred");
+    });
+});
 
-      res.send("An error has occured");
+router.delete("/delete", function (req, res) {
+  ProdModel.findOneAndDelete({ name: req.body.name }, { new: true })
+    .then(function (dbDocument) {
+      res.json({
+        status: "ok",
+        message: dbDocument,
+      });
+    })
+    .catch(function (err) {
+      console.log("/product/delete error", err);
+      res.send("An Error Occurred");
     });
 });
 

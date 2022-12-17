@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Redirect, Route } from "react-router-dom";
-import ResponsiveAppBar from "./ResponsiveAppBar";
+import ResponsiveAppBar from "./exercise-file/ResponsiveAppBar";
 import Footer from "./Footer";
 import { UserContext } from "./UserContext";
 

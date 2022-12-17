@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-// Schema
-
+//Schema
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -33,11 +32,19 @@ const UserSchema = new mongoose.Schema({
   },
   dateCreated: {
     type: Date,
-    required: true,
+    required: false,
     default: Date.now,
   },
   subscription: {
     type: Boolean,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: false,
+  },
+  language: {
+    type: String,
     required: false,
   },
 });
