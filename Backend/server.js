@@ -6,6 +6,7 @@ const cors = require("cors");
 const expressFormData = require("express-form-data");
 require("dotenv").config();
 
+const UsersModel = require("./models/UsersModel.js");
 const usersRoutes = require("./routes/users-routes.js");
 const productsRoutes = require("./routes/products-routes.js");
 
@@ -40,7 +41,7 @@ const passportJwt = (passport) => {
   passport.use(
     new JwtStrategy(passportJwtOptions, (jwtPayload, done) => {
       // Tell passport what to do with payload
-      UserModel.findOne({ _id: jwtPayload._id })
+      UsersModel.findOne({ _id: jwtPayload._id })
         .then((dbDocument) => {
           // The done() function will pass the
           // dbDocument to Express. The user's

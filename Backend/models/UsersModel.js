@@ -35,10 +35,6 @@ const UserSchema = new mongoose.Schema({
     required: false,
     default: Date.now,
   },
-  subscription: {
-    type: Boolean,
-    required: true,
-  },
   location: {
     type: String,
     required: false,
