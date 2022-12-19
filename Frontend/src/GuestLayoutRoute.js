@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import { Redirect, Route } from "react-router-dom";
-import ResponsiveAppBar from "./exercise-file/ResponsiveAppBar";
-import Footer from "./Footer";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import Footer from "./components/Footer";
 import { UserContext } from "./UserContext";
 
 function GuestLayoutRoute(props) {
-  const { loggedIn } = UserContext;
+  const { loggedIn } = useContext(UserContext);
 
-  if (!loggedIn) {
+  if (loggedIn === false) {
     return (
       <Box
         sx={{

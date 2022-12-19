@@ -72,7 +72,7 @@ router.post("/register", function (req, res) {
               formData["password"] = theHash;
 
               // Create the user's account with hashed password
-              UserModel.create(formData)
+              UsersModel.create(formData)
                 // If successful...
                 .then(function (createdDocument) {
                   // Express sends this...

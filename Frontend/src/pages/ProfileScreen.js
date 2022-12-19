@@ -5,7 +5,7 @@ export default function ProfileScreen() {
   const [userDetails, setUserDetails] = useState();
 
   useEffect(function () {
-    fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/find`, {
+    fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/findbyid`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jsonwebtoken")}`,
@@ -29,7 +29,6 @@ export default function ProfileScreen() {
         <li>Firstname: {userDetails.firstName}</li>
         <li>Lastname: {userDetails.lastName}</li>
         <li>Email: {userDetails.email}</li>
-        <li>Password</li>
       </ul>
     );
   } else {

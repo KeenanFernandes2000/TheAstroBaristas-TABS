@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { UserContext } from "./UserContext.js";
+import { UserContext } from "../UserContext.js";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";

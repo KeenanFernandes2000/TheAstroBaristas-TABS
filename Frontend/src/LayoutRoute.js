@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom"; //import with curly braces for items that are not default
-import ResponsiveAppBar from "./exercise-file/ResponsiveAppBar";
-import Footer from "./Footer";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 
 function LayoutRoute(props) {
