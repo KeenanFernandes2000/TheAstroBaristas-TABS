@@ -1,4 +1,6 @@
 import { useEffect, useContext, useState } from "react";
+import Button from "@mui/material/Button";
+import { Link as ReactLink } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 export default function ProfileScreen() {
@@ -29,6 +31,14 @@ export default function ProfileScreen() {
         <li>Firstname: {userDetails.firstName}</li>
         <li>Lastname: {userDetails.lastName}</li>
         <li>Email: {userDetails.email}</li>
+        <Button
+          component={ReactLink}
+          to="/update"
+          key="Update"
+          sx={{ my: 2, color: "white", display: "block" }}
+        >
+          Update Details
+        </Button>
       </ul>
     );
   } else {
