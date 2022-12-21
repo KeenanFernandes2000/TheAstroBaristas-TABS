@@ -35,7 +35,7 @@ export default function ProfileScreen() {
           component={ReactLink}
           to="/update"
           key="Update"
-          sx={{ my: 2, color: "white", display: "block" }}
+          sx={{ my: 2, display: "block" }}
         >
           Update Details
         </Button>

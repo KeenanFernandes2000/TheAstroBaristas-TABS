@@ -1,108 +1,110 @@
 import TextField from "@mui/material/TextField";
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Box from "@mui/material/Box";
 import { useState } from "react";
+import { Alert, Avatar, Button, Typography } from "@mui/material";
 
 export default function UserUpdateScreen() {
-  // const [value, setValue] = React.useState(null);
-  var [formState, setFormState] = useState(null);
+  var [formState, setFormState] = useState("loading");
 
   var firstNameField;
   var lastNameField;
   var emailField;
-  var locationField;
-  var phoneField;
 
   var formData = new FormData();
+  // setFormState("loading");
 
-  setFormState("loading");
+  function sendDetails() {
+    // 6. Send data backend
 
-  // 6. Send data backend
-  formData.append("firstName", firstNameField.value);
-  formData.append("lastName", lastNameField.value);
-  formData.append("email", emailField.value);
-  formData.append("phone", phoneField.value);
-  formData.append("location", locationField.value);
+    formData.append("firstName", firstNameField.value);
+    formData.append("lastName", lastNameField.value);
+    formData.append("email", emailField.value);
+    localStorage.setItem("firstName", firstNameField.value);
+    localStorage.setItem("lastName", lastNameField.value);
+    localStorage.setItem("email", emailField.value);
 
-  fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/update`, {
-    method: "POST",
-    body: formData,
-  })
-    .then(function (backendResponse) {
-      // Convert the HTTP string response to JSON
-      return backendResponse.json();
+    fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/update`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jsonwebtoken")}`,
+      },
+      body: formData,
     })
-    .then(
-      // 7. If backend sends success, go to "success"
-      function (jsonResponse) {
-        if (jsonResponse.status === "ok") {
-          console.log("backend response /users/update", jsonResponse);
-          setFormState("success");
+      .then(function (backendResponse) {
+        // Convert the HTTP string response to JSON
+        return backendResponse.json();
+      })
+      .then(
+        // 7. If backend sends success, go to "success"
+        function (jsonResponse) {
+          if (jsonResponse.status === "ok") {
+            console.log("backend response /users/update", jsonResponse);
+            setFormState("success");
+          }
         }
-      }
-    )
-    .catch(
-      // 8. If backends sends error, go to "backend error"
-      function (backendError) {
-        console.log("backendError at /users/register", backendError);
-        setFormState("backend error");
-      }
-    );
+      )
+      .catch(
+        // 8. If backends sends error, go to "backend error"
+        function (backendError) {
+          console.log("backendError at /users/register", backendError);
+          setFormState("backend error");
+        }
+      );
+  }
 
   return (
-    <Box>
+    <Box className="container">
+      <Typography className="mt-5 mb-5 ms-5" variant="h2">
+        Update Details
+      </Typography>
+      <Avatar
+        src="/static/images/avatar/2.jpg"
+        sx={{ width: 150, height: 150, ml: "auto", mr: "auto" }}
+      />
       <TextField
+        className="container mt-5"
         id="filled-basic"
         label="First Name"
         variant="filled"
         inputRef={function (thisElement) {
           firstNameField = thisElement;
         }}
-      />
+        defaultValue={localStorage.getItem("firstName")}
+      />{" "}
+      <br />
       <TextField
         id="filled-basic"
+        className="container mt-3"
         inputRef={function (thisElement) {
           lastNameField = thisElement;
         }}
+        defaultValue={localStorage.getItem("lastName")}
         label="Last Name"
         variant="filled"
-      />
+      />{" "}
+      <br />
       <TextField
         id="filled-basic"
-        inputRef={function (thisElement) {
-          phoneField = thisElement;
-        }}
-        label="Phone"
-        variant="filled"
-      />
-      <TextField
-        id="filled-basic"
+        className="container mt-3"
         inputRef={function (thisElement) {
           emailField = thisElement;
         }}
+        defaultValue={localStorage.getItem("email")}
         label="Email"
         variant="filled"
-      />
-      <TextField
-        id="filled-basic"
-        inputRef={function (thisElement) {
-          locationField = thisElement;
-        }}
-        label="Location"
-        variant="filled"
-      />
-      {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          label="Date Of Birth"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </LocalizationProvider>*/}
+      />{" "}
+      <br />
+      <Button sx={{ mt: 2 }} onClick={sendDetails}>
+        Send
+      </Button>
+      <br />
+      <Box mt={2}>
+        {formState === "success" && (
+          <Alert severity="success">
+            Your details have been updated successfully!
+          </Alert>
+        )}
+      </Box>
     </Box>
   );
 }
