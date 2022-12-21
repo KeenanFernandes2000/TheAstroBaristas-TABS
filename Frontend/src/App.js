@@ -20,8 +20,16 @@ function App() {
         <LayoutRoute path="/about" exact={true} component={AboutScreen} />
         <LayoutRoute path="/products" exact={true} component={ProductScreen} />
         {/* <LayoutRoute path="/contact" exact={true} component={ContactScreen} /> */}
-        <LayoutRoute path="/profile" exact={true} component={ProfileScreen} />
-        <LayoutRoute path="/update" exact={true} component={UserUpdateScreen} />
+        <PrivateLayoutRoute
+          path="/profile"
+          exact={true}
+          component={ProfileScreen}
+        />
+        <PrivateLayoutRoute
+          path="/update"
+          exact={true}
+          component={UserUpdateScreen}
+        />
         <GuestLayoutRoute
           path="/register"
           exact={true}

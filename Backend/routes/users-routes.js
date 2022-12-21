@@ -238,8 +238,8 @@ router.put(
     if (req.body.lastName) {
       updates["lastName"] = req.body.lastName;
     }
-    if (req.body.phone) {
-      updates["phone"] = req.body.phone;
+    if (req.body.email) {
+      updates["email"] = req.body.email;
     }
 
     UsersModel.findOneAndUpdate(
