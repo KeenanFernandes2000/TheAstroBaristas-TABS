@@ -16,11 +16,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { UserContext } from "../UserContext";
 import { useEffect, useContext, useState } from "react";
 
-const pages = ["Home", "About Us", "products"];
+const pages = ["Home", "About", "products"];
 const pagesPaths = ["/", "/about", "/products"];
 
-const settings = ["Profile"];
-const settingPaths = ["/profile"];
+const settings = [];
+const settingPaths = [];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -64,17 +64,16 @@ function ResponsiveAppBar() {
 
   if (userDetails) {
     return (
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: "#212529" }} position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
               variant="h6"
               noWrap
               component="a"
               href="/"
               sx={{
-                mr: 2,
+                mr: 42,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -86,7 +85,12 @@ function ResponsiveAppBar() {
               THEASTROBARISTAS
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -107,7 +111,7 @@ function ResponsiveAppBar() {
                 keepMounted
                 transformOrigin={{
                   vertical: "top",
-                  horizontal: "left",
+                  horizontal: "center",
                 }}
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
@@ -198,9 +202,19 @@ function ResponsiveAppBar() {
                 ))}
 
                 {loggedIn ? (
-                  <MenuItem onClick={logoutUser}>
-                    <Typography textAlign="center">Logout</Typography>
-                  </MenuItem>
+                  <Box>
+                    <MenuItem
+                      to={"/profile"}
+                      component={ReactLink}
+                      onClick={handleCloseUserMenu}
+                    >
+                      <Typography textAlign="center">Profile</Typography>
+                    </MenuItem>
+
+                    <MenuItem onClick={logoutUser}>
+                      <Typography textAlign="center">Logout</Typography>
+                    </MenuItem>
+                  </Box>
                 ) : (
                   <Box>
                     <MenuItem
@@ -227,17 +241,16 @@ function ResponsiveAppBar() {
     );
   } else {
     return (
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: "#212529" }} position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
               variant="h6"
               noWrap
               component="a"
               href="/"
               sx={{
-                mr: 2,
+                mr: 42,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -351,9 +364,19 @@ function ResponsiveAppBar() {
                 ))}
 
                 {loggedIn ? (
-                  <MenuItem onClick={logoutUser}>
-                    <Typography textAlign="center">Logout</Typography>
-                  </MenuItem>
+                  <Box>
+                    <MenuItem
+                      to={"/profile"}
+                      component={ReactLink}
+                      onClick={handleCloseUserMenu}
+                    >
+                      <Typography textAlign="center">Profile</Typography>
+                    </MenuItem>
+
+                    <MenuItem onClick={logoutUser}>
+                      <Typography textAlign="center">Logout</Typography>
+                    </MenuItem>
+                  </Box>
                 ) : (
                   <Box>
                     <MenuItem

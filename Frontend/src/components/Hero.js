@@ -1,5 +1,4 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -9,44 +8,32 @@ function Hero() {
     <Box
       sx={{
         bgcolor: "#65647c",
-        pt: 8,
-        pb: 6,
+        pt: 13,
+        pb: 8,
+        minHeight: "81vh",
       }}
     >
       <Container maxWidth="sm">
         <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        ></Typography>
-        <Typography
-          variant="h5"
+          variant="h3"
           align="center"
           color="#c7bca1"
-          fontSize={58}
+          paddingTop={10}
+          // fontSize={50}
           paragraph
         >
           Everything you need for COFFEE and more
         </Typography>
         <Typography
-          variant="h5"
+          variant="h6"
           align="center"
           color="white"
-          fontSize={35}
+          fontSize={26}
           paragraph
         >
           Get the best coffee beans, brewing equipment and more at the best
-          price.{" "}
+          price.
         </Typography>
-
-        <Stack
-          sx={{ pt: 10 }}
-          direction="row"
-          spacing={2}
-          justifyContent="center"
-        ></Stack>
       </Container>
     </Box>
   );

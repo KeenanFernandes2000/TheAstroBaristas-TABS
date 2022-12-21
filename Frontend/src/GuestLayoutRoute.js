@@ -8,7 +8,7 @@ import { UserContext } from "./UserContext";
 function GuestLayoutRoute(props) {
   const { loggedIn } = useContext(UserContext);
 
-  if (loggedIn === false) {
+  if (!loggedIn) {
     return (
       <Box
         sx={{

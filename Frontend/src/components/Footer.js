@@ -8,20 +8,27 @@ import Container from "@mui/material/Container";
 export default function Footer() {
   return (
     <Box
+      // style={{ backgroundColor: "#212529" }}
       component="footer"
       sx={{
         py: 3,
         px: 2,
         align: "center",
         mt: "auto",
-        backgroundColor: (theme) =>
-          theme.palette.mode === "dark"
-            ? theme.palette.grey[200]
-            : theme.palette.grey[800],
+        // backgroundColor: (theme) =>
+        //   theme.palette.mode === "dark"
+        //     ? theme.palette.grey[200]
+        //     : theme.palette.grey[800],
+        backgroundColor: "#212529",
       }}
     >
-      <Container maxWidth="sm" align="left" vertical="bottom" horizontal="left">
-        <Typography variant="body1" align="left" color="white">
+      <Container
+        maxWidth="sm"
+        align="center"
+        vertical="center"
+        horizontal="center"
+      >
+        <Typography variant="body1" align="center" color="white">
           © 2022 TheAstroBaristas, Inc
         </Typography>
       </Container>

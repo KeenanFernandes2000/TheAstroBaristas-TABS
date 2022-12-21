@@ -58,7 +58,8 @@ export default function UserUpdateScreen() {
         Update Details
       </Typography>
       <Avatar
-        src="/static/images/avatar/2.jpg"
+        alt={localStorage.getItem("firstName")}
+        src={localStorage.getItem("avatar")}
         sx={{ width: 150, height: 150, ml: "auto", mr: "auto" }}
       />
       <TextField

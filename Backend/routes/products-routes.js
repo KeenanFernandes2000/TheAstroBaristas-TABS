@@ -2,20 +2,41 @@ const express = require("express"); //import express
 const router = express.Router(); //create express app
 const bodyParser = require("body-parser"); //import body-parser
 const ProdModel = require("../models/ProductsModel.js");
+const cloudinary = require("cloudinary").v2;
 
-router.post("/add", function (req, res) {
-  let prodInfo = {
-    name: req.body.name,
-    weight: req.body.weight,
-    quantity: req.body.quantity,
-    image: req.body.image,
-    price: req.body.price,
-    category: req.body.category,
-    rating: req.body.rating,
+router.post("/add", async function (req, res) {
+  let newDocument = {
     brand: req.body.brand,
-    createdDate: req.body.createdDate,
+    model: req.body.model,
+    price: req.body.price,
+    color: req.body.color,
   };
-  ProdModel.create(prodInfo)
+
+  if (Object.values(req.files).length > 0) {
+    const files = Object.values(req.files);
+
+    // upload to Cloudinary
+    await cloudinary.uploader.upload(
+      files[0].path,
+      (cloudinaryErr, cloudinaryResult) => {
+        if (cloudinaryErr) {
+          console.log(cloudinaryErr);
+          res.json({
+            status: "not ok",
+            message: "Error occured during image upload",
+          });
+        } else {
+          // Include the image url in formData
+          newDocument.image = cloudinaryResult.url;
+          // console.log("formData.image", newDocument.image);
+        }
+      }
+    );
+  } else {
+    newDocument.image = "https://actogmbh.com/files/no-product-image.png";
+  }
+
+  ProdModel.create(newDocument)
     .then(function (dbDocument) {
       res.json({
         status: "ok",
@@ -28,32 +49,30 @@ router.post("/add", function (req, res) {
     });
 });
 
-router.post("/find", function (req, res) {
-  ProdModel.find({
-    brand: req.body.brand,
-  })
+router.post("/findbyid", function (req, res) {
+  ProdModel.findById(req.user.id)
     .then(function (dbDocument) {
-      res.json({
-        status: "ok",
-        message: dbDocument,
-      });
+      res.json(dbDocument);
     })
-    .catch(function (err) {
-      console.log("/product/find error", err);
-      res.send("An Error Occurred");
+    .catch(function (error) {
+      console.log("/product/find error", error);
+
+      res.send("An error occured");
     });
 });
+
+//Find All Products
 router.post("/findall", function (req, res) {
-  ProdModel.find({})
+  ProdModel.find({
+    // brand: req.body.brand,
+  })
     .then(function (dbDocument) {
-      res.json({
-        status: "ok",
-        message: dbDocument,
-      });
+      res.json(dbDocument);
     })
-    .catch(function (err) {
-      console.log("/product/findall error", err);
-      res.send("An Error Occurred");
+    .catch(function (error) {
+      console.log("/product error", error);
+
+      res.send("An error has occured");
     });
 });
 
